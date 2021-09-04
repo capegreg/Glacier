@@ -1,0 +1,20 @@
+{
+  "name": "Glacier",
+  "version": "1.0.0",
+  "description": "2020-06-09, Gregory Bologna",
+  "main": "index.js",
+  "dependencies": {
+    "os-service": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
