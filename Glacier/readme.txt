@@ -88,7 +88,7 @@ Do not start the service until the Glacier runtime environment is configured
 
 II. Configuring Glacier application environment
 
-There are 10 files in the Glacier application environment found here: \\hades\f$\GlacierVault\pao-vault-app
+There are 10 files in the Glacier application environment found here: xxxxxxxxxxxx
 
 1. 	vault-upload.js		-- handles document uploads
 2. 	vault-purge.js		-- handles document purges from AWS
@@ -108,14 +108,14 @@ Note: The two environments are Test and Production
 Locate "IMAGE_ENV" constant. 
 The value equals the Doc_Imaging directory "DEV" or "PROD" at this location
 
-\\Doc_Imaging\DEV
-\\Doc_Imaging\PROD
+\\xxxxxxxxxxxx\DEV
+\\xxxxxxxxxxxx\PROD
 
-\\ Doc_Imaging is now saved to PKG_UTILS package
+\\ xxxxxxxxxxxx is now saved to PKG_UTILS package
 
 FUNCTION fnc_get_nas_path RETURN varchar2 is
 BEGIN
-  return '\\Doc_Imaging\DEV';
+  return '\\xxxxxxxxxxxx\DEV';
 END fnc_get_nas_path;
 
 
@@ -130,8 +130,8 @@ Change AWS region
 
 glacier.js
 
-US East (N. Virginia) us-east-1	-- Production
-US East (Ohio) us-east-2		-- Test
+xxxxxxxxxxxx	-- Production
+xxxxxxxxxxxx	-- Test
 
 Change connectString in dbconfig.js to iaswprod
 Make sure to update the AWS credentials in pkg_utils.fnc_get_aws_settings to the correct AWS access keys
