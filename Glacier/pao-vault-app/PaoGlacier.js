@@ -32,7 +32,7 @@ class PaoGlacier extends PaoCreds {
 				CreationDate: "2016-09-23T19:27:18.665Z", 
 				NumberOfArchives: 0, 
 				SizeInBytes: 0, 
-				VaultARN: "arn:aws:glacier:us-west-2:111122223333:vaults/my-vault", 
+				VaultARN: "xxxxxxxx", 
 				VaultName: "my-vault"
 			}
 		********************************************************************************************* */
@@ -56,9 +56,9 @@ class PaoGlacier extends PaoCreds {
 		https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Glacier.html#uploadArchive-property
 
 			data = {
-			archiveId: "kKB7ymWJVpPSwhGP6ycSOAekp9ZYe_--zM_mw6k76ZFGEIWQX-ybtRDvc2VkPSDtfKmQrj0IRQLSGsNuDp-AJVlu2ccmDSyDUmZwKbwbpAdGATGDiB3hHO0bjbGehXTcApVud_wyDw", 
-			checksum: "969fb39823836d81f0cc028195fcdbcbbe76cdde932d4646fa7de5f21e18aa67", 
-			location: "/0123456789012/vaults/my-vault/archives/kKB7ymWJVpPSwhGP6ycSOAekp9ZYe_--zM_mw6k76ZFGEIWQX-ybtRDvc2VkPSDtfKmQrj0IRQLSGsNuDp-AJVlu2ccmDSyDUmZwKbwbpAdGATGDiB3hHO0bjbGehXTcApVud_wyDw"
+			archiveId: "xxxxxxxx", 
+			checksum: "xxxxxxxx", 
+			location: "xxxxxxxx"
 			}
 
 		params: obj lit., values {fileSystemId, fileType}
@@ -163,18 +163,18 @@ class PaoGlacier extends PaoCreds {
 			JobList: [
 				{
 				Action: "ArchiveRetrieval", 
-				ArchiveId: "kKB7ymWJVpPSwhGP6ycSOAekp9ZYe_--zM_mw6k76ZFGEIWQX-ybtRDvc2VkPSDtfKmQrj0IRQLSGsNuDp-AJVlu2ccmDSyDUmZwKbwbpAdGATGDiB3hHO0bjbGehXTcApVud_wyDw", 
-				ArchiveSHA256TreeHash: "9628195fcdbcbbe76cdde932d4646fa7de5f219fb39823836d81f0cc0e18aa67", 
+				ArchiveId: "xxxxxxxx", 
+				ArchiveSHA256TreeHash: "xxxxxxxx", 
 				ArchiveSizeInBytes: 3145728, 
 				Completed: false, 
 				CreationDate: "2015-07-17T21:16:13.840Z", 
 				JobDescription: "Retrieve archive on 2015-07-17", 
-				JobId: "l7IL5-EkXyEY9Ws95fClzIbk2O5uLYaFdAYOi-azsX_Z8V6NH4yERHzars8wTKYQMX6nBDI9cMNHzyZJO59-8N9aHWav", 
+				JobId: "xxxxxxxx", 
 				RetrievalByteRange: "0-3145727", 
-				SHA256TreeHash: "9628195fcdbcbbe76cdde932d4646fa7de5f219fb39823836d81f0cc0e18aa67", 
-				SNSTopic: "arn:aws:sns:us-west-2:0123456789012:my-vault", 
+				SHA256TreeHash: "xxxxxxxx", 
+				SNSTopic: "xxxxxxxx", 
 				StatusCode: "InProgress", 
-				VaultARN: "arn:aws:glacier:us-west-2:0123456789012:vaults/my-vault"
+				VaultARN: "xxxxxxxx"
 			}, 
 				{
 				Action: "InventoryRetrieval", 
@@ -183,9 +183,9 @@ class PaoGlacier extends PaoCreds {
 				InventoryRetrievalParameters: {
 				Format: "JSON"
 				}, 
-				JobId: "zbxcm3Z_3z5UkoroF7SuZKrxgGoDc3RloGduS7Eg-RO47Yc6FxsdGBgf_Q2DK5Ejh18CnTS5XW4_XqlNHS61dsO4CnMW", 
+				JobId: "xxxxxxxx", 
 				StatusCode: "InProgress", 
-				VaultARN: "arn:aws:glacier:us-west-2:0123456789012:vaults/my-vault"
+				VaultARN: "xxxxxxxx"
 			}
 			]
 		}
