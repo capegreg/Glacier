@@ -396,7 +396,7 @@ async function run() {
 ************************************* */
 
 // where to write log
-let FilePath		= '\\\\manateepao.com\\MCPAO_Data\\IT\\Source_Code\\GlacierVault\\glacier_logs';
+let FilePath		= 'xxxxxxxxxxxx';
 let FileName		= `glacier-purge`; // log file name prefixed to timstamp in logger
 
 let logProps = {
