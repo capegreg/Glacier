@@ -404,7 +404,7 @@ function validateNasPath() {
 ************************************* */
 
 // where to write  log
-let FilePath		= `\\\\manateepao.com\\MCPAO_Data\\IT\\Source_Code\\GlacierVault\\glacier_logs`;
+let FilePath		= `xxxxxxxx`;
 let FileName		= `glacier-delete-errors`; // log file name prefixed to timstamp in logger
 
 let logProps = {
