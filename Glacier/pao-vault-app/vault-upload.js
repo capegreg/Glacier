@@ -174,7 +174,7 @@ const flagDeleteDocument = (docId, flagString) => new Promise((resolve, reject) 
 	})
 	.then(connection => {
 		var bindvars = {	
-			rowcount:  		{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
+			rowcount:  	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			return_code: 	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			id: docId,
 			flag: flagString
@@ -436,7 +436,7 @@ function validateNasPath() {
 ************************************* */
 
 // where to write log
-let FilePath		= '\\\\manateepao.com\\MCPAO_Data\\IT\\Source_Code\\GlacierVault\\glacier_logs';
+let FilePath		= 'xxxxxxxxxxxx\\glacier_logs';
 let FileName		= `glacier-upload-debug`; // (suffixed to timestamp in logger)
 let logProps = {
 	filePath: FilePath,
