@@ -41,8 +41,8 @@ const PaoRestorer = require('./PaoRestorer');
 // error logging
 const PaoLogger = require('./PaoLogger');
 // file handling
-const path 					= require('path');
-const fs 						= require('fs');
+const path = require('path');
+const fs = require('fs');
 // API for decoding Buffer objects into strings
 const { StringDecoder } = require('string_decoder');
 const decoder = new StringDecoder('utf8');
@@ -79,10 +79,10 @@ const setPurgedDateRangeObject = () => new Promise((resolve, reject) => {
 		var bindvars = {	
 			v_iso8601_min:  { type: oracledb.STRING, dir: oracledb.BIND_OUT },
 			v_iso8601_max: 	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_utc_min:  		{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_utc_max: 			{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_nls_min:  		{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_nls_max: 			{ type: oracledb.STRING, dir: oracledb.BIND_OUT }						
+			v_utc_min:  	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
+			v_utc_max: 	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
+			v_nls_min:  	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
+			v_nls_max: 	{ type: oracledb.STRING, dir: oracledb.BIND_OUT }						
 		}
 		const result = connection.execute(
 			`BEGIN pkg_purge_services.prc_get_purged_date_range(
