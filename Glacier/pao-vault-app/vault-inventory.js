@@ -261,10 +261,10 @@ const setRestoreDateRangeObject = () => new Promise((resolve, reject) => {
 		var bindvars = {	
 			v_iso8601_min:  { type: oracledb.STRING, dir: oracledb.BIND_OUT },
 			v_iso8601_max: 	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_utc_min:  		{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_utc_max: 			{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_nls_min:  		{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
-			v_nls_max: 			{ type: oracledb.STRING, dir: oracledb.BIND_OUT }						
+			v_utc_min:  	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
+			v_utc_max: 	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
+			v_nls_min:  	{ type: oracledb.STRING, dir: oracledb.BIND_OUT },
+			v_nls_max: 	{ type: oracledb.STRING, dir: oracledb.BIND_OUT }						
 		}
 		const result = connection.execute(
 			`BEGIN pkg_purge_services.prc_get_restore_date_range(
@@ -559,9 +559,7 @@ const setArchiveDeleted = (purgeArray) => new Promise((resolve, reject) => {
 	})
 	.then(c => {
 		connection = c;
-		let sql = `UPDATE IDOCS.idocs_documents 
-								SET file_type = 'DELETD' 
-								WHERE document_id = :0`;
+		let sql = `UPDATE IDOCS.idocs_documents SET file_type = 'DELETD' WHERE document_id = :0`;
 	
 		let binds = [];
 		let ids = purgeArray.map(function(id){
@@ -575,9 +573,9 @@ const setArchiveDeleted = (purgeArray) => new Promise((resolve, reject) => {
 		let options = {
 			autoCommit: true,
 			batchErrors: true, // no commit occurs if data error
-      bindDefs: [
+      			bindDefs: [
 				{ type: oracledb.NUMBER }	// DOCUMENT_ID
-      ]			
+      			]			
 		};
 		connection.executeMany(sql, binds, options)
 		.then(result => {			
@@ -610,10 +608,10 @@ const setDocumentDeleted = (purgeArray) => new Promise((resolve, reject) => {
 	.then(c => {		
 		connection = c;
 	  let sql = `UPDATE idocs.idocx_field f 
-								SET f.string_value = 'DELETD' || REPLACE(f.string_value, 'PURGED')
-								WHERE f.name in ('Category', 'Photo Category') 
-									AND f.string_value LIKE 'PURGED%' 
-									AND document = :0`;
+		SET f.string_value = 'DELETD' || REPLACE(f.string_value, 'PURGED')
+		WHERE f.name in ('Category', 'Photo Category') 
+		AND f.string_value LIKE 'PURGED%' 
+		AND document = :0`;
 	
 		let binds = [];
 		let ids = purgeArray.map(function(id){
@@ -627,9 +625,9 @@ const setDocumentDeleted = (purgeArray) => new Promise((resolve, reject) => {
 		let options = {
 			autoCommit: true,
 			batchErrors: true, // no commit occurs if data error
-      bindDefs: [
+      			bindDefs: [
 				{ type: oracledb.NUMBER }	// DOCUMENT_ID
-      ]			
+      			]			
 		};
 		connection.executeMany(sql, binds, options)
 		.then(result => {			
@@ -661,7 +659,7 @@ const setRestoreRequested = (docId) => new Promise((resolve, reject) => {
 	})
 	.then(connection => {
 		var bindvars = {	
-			rowcount:  		{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
+			rowcount:  	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			return_code: 	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			id: docId
 		}
@@ -707,7 +705,7 @@ const setRestoreCompleted = (docId) => new Promise((resolve, reject) => {
 	})
 	.then(connection => {
 		var bindvars = {	
-			rowcount:  		{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
+			rowcount:  	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			return_code: 	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			id: docId
 		}
@@ -751,10 +749,10 @@ const updatePurgedArchivesJobId = (jobId) => new Promise((resolve, reject) => {
 	})
 	.then(connection => {
 		var bindvars = {	
-			job_id:			jobId,
+			job_id:		jobId,
 			start_date: 	purgedDateRange.NLS.StartDate,
-			end_date: 		purgedDateRange.NLS.EndDate,			
-			rowcount:  		{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
+			end_date: 	purgedDateRange.NLS.EndDate,			
+			rowcount:  	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT },
 			return_code: 	{ type: oracledb.NUMBER, dir: oracledb.BIND_OUT }
 		}
 		const result = connection.execute(
@@ -807,9 +805,9 @@ const updatePurgedArchivesJobId = (jobId) => new Promise((resolve, reject) => {
     StartDate: '2021-01-22T07:10:49Z'
   JobDescription: Inventory requested on Mon Jan 25 2021 13:58:26 GMT-0500 (Eastern
     Standard Time)
-  JobId: 4bsImkUqKOJzU_N4cWrKuk4w-z7STbNVLK1iitH4a_ez4U2JD2xzeQhQElCNjmYwwofgXo42d5KhCE8vOHWAXQekQ1y-
+  JobId: xxxxxxxxxxxx
   StatusCode: InProgress
-	VaultARN: arn:aws:glacier:us-east-2:233578478054:vaults/removed
+	VaultARN: xxxxxxxxxxxx
 
 	A job ID will not expire for at least 24 hours after Glacier completes the job.
 
@@ -1169,8 +1167,8 @@ const writeRestore = async (output, archiveId) => {
 		if (metadata.archive_id === archiveId) {
 		
 			let restorePath = path.join(nas.getFolder(values.documentType), 
-																	values.fileSystemId.substr(0, 2), 
-																	values.fileSystemId) + '.' + values.fileType;
+			values.fileSystemId.substr(0, 2), 
+			values.fileSystemId) + '.' + values.fileType;
 
 			// this is correct size in bytes. values.fileSizeInBytes
 
@@ -1494,7 +1492,7 @@ function validateNasPath() {
 ************************************* */
 
 // where to write log
-let FilePath		= '\\\\manateepao.com\\MCPAO_Data\\IT\\Source_Code\\GlacierVault\\glacier_logs';
+let FilePath		= 'xxxxxxxxxxxx';
 let FileName		= `glacier-inventory`; // log file name prefixed to timstamp in loggerError
 
 let logProps = {
